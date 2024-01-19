@@ -1,4 +1,5 @@
 const express = require('express');
+const v1router = require('./v1/routes')
 
 const app = express();
 const PUERTO = process.env.PORT || 3000;
@@ -6,6 +7,8 @@ const PUERTO = process.env.PORT || 3000;
 app.get('/', (req, res) =>{
     res.send("<h2>It's Working!</h2>");
 });
+
+app.use('/api/v1', v1router);
 
 app.listen(PUERTO, () => {
     console.log(`El servidor esta escuchando en el puerte ${PUERTO}...`)
