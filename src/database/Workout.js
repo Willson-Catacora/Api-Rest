@@ -34,8 +34,9 @@ const updateOneWorkout = (workoutId, change) => {
     ...change,
     updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" })
   }
-  DB.workouts[indexForUpdate] = updatedWorkout
-  saveToDatabase(db);
+  console.log(updatedWorkout);
+  DB.workouts[indexForUpdate] = updatedWorkout;
+  saveToDatabase(DB);
   return updatedWorkout;
 }
 
