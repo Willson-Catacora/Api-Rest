@@ -9,8 +9,22 @@ const getOneWorkout = (req , res) => {
     res.send('Get an exidting workout');
 };
 const createNewWorkout = (req , res) => {
-    const createdWorkout = workoutService.createNewWorkout();
-    res.send('Create an new workout');
+    const { body } = req;
+    if(
+        !body.name || !body.mode || !body.equipment || 
+        !body.exercises || !body.trainerTips 
+    ){
+        return;
+    }
+    const newWorkout = {
+        name: body.name,
+        mode: body.mode,
+        equipment: body.equipment,
+        exercises: body.exercises,
+        trainerTips: body.trainerTips
+    }
+    const createdWorkout = workoutService.createNewWorkout(newWorkout);
+    res.status(201).send({ status: 'OK', data: createdWorkout });
 };
 const updateOneWorkout = (req , res) => {
     const updatedWorkout = workoutService.updateOneWorkout();
