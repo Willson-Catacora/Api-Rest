@@ -12,4 +12,7 @@ router.delete('/:workoutId', workoutController.deleteOneWorkout);
 
 router.get('/:workoutId/records', recordController.getRecordForWorkout);
 
+// router.get('/:workoutId/records/members/:members', recordController.getRecordForWorkout);
+
+
 module.exports = router;
